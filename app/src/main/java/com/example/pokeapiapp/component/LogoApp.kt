@@ -1,10 +1,11 @@
-package com.example.pokeapiapp.screen
+package com.example.pokeapiapp.component
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,51 +38,29 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.pokeapiapp.R
-import com.example.pokeapiapp.component.ButtonBase
-import com.example.pokeapiapp.component.TextFieldBase
-import com.example.pokeapiapp.component.TextFieldPassword
-import com.example.pokeapiapp.component.ButtonBase
-import com.example.pokeapiapp.component.LogoApp
-import com.example.pokeapiapp.component.TextFieldBase
-import com.example.pokeapiapp.component.TextFieldPassword
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun LoginScreen(
-    navController: NavController
-) {
-    val emailValue = remember { mutableStateOf("") }
-    val passwordValue = remember { mutableStateOf("") }
-    val passwordVisible = remember { mutableStateOf(false) }
-
-    Scaffold(containerColor = MaterialTheme.colorScheme.background)
-    {
-        LazyColumn(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-        ) {
-            item {
-
-                LogoApp()
-                Spacer(modifier = Modifier.padding(20.dp))
-                TextFieldBase("Correo",emailValue)
-                Spacer(modifier = Modifier.padding(10.dp))
-                TextFieldPassword("Contraseña",passwordValue,passwordVisible)
-                Spacer(modifier = Modifier.padding(20.dp))
-                ButtonBase("Iniciar sesión",onClick={
-                    navController.navigate("pokemon_list_screen")
-                })
+fun LogoApp() {
 
 
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
 
-            }
-        }
+        Image(
+            painter = painterResource(id = R.drawable.logopokemon),
+            contentDescription = "Logo For Login",
+            modifier = Modifier.size(200.dp)
+        )
+
     }
+
 
 }
